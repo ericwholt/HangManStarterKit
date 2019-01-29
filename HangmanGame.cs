@@ -8,13 +8,16 @@ namespace HangManStarterKit
 {
     class HangmanGame
     {
+        //this is the word you're trying to guess
         public string word;
         public int tries = 0;
         public List<char> guessedLetters = new List<char>();
         public List<char> foundLetters = new List<char>();
         List<string> wordBank = new List<string>{"fish","apple","tree", "dog", "rides", "scrambled" };
-        public HangmanGame()
+        Player guesser;
+        public HangmanGame(Player guesser)
         {
+            this.guesser = guesser;
             Random r = new Random();
             int index = r.Next(0,wordBank.Count);
             word = wordBank[index];
@@ -22,8 +25,9 @@ namespace HangManStarterKit
             Setup();
         }
 
-        public HangmanGame(string word)
+        public HangmanGame(Player guesser, string word)
         {
+            this.guesser = guesser;
             this.word = word;
             Setup();
         }
@@ -45,8 +49,9 @@ namespace HangManStarterKit
                 PrintProgress();
                 Console.WriteLine("Please guess a letter");
                 //This is where you'll want to call your player.guess() method
-                char c = char.Parse(Console.ReadLine());
-                
+                /// char c = char.Parse(Console.ReadLine());
+                char c = guesser.Guess();
+                Console.WriteLine(c);
                 PlayRound(c);
             }
             PrintProgress();

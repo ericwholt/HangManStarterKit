@@ -10,8 +10,10 @@ namespace HangManStarterKit
     {
         static void Main(string[] args)
         {
+            Player p = new ABCplayer();
+            HumanPlayer p2 = new HumanPlayer();
             //Need to add in how to handle multi letter words like apple
-            HangmanGame hg = new HangmanGame();
+            HangmanGame hg = new HangmanGame(p2);
         }
     }
 }
