@@ -44,6 +44,7 @@ namespace HangManStarterKit
                 Console.WriteLine();
                 PrintProgress();
                 Console.WriteLine("Please guess a letter");
+                //This is where you'll want to call your player.guess() method
                 char c = char.Parse(Console.ReadLine());
                 
                 PlayRound(c);
