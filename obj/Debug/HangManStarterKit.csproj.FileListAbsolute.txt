@@ -12,3 +12,10 @@ C:\Users\Tommy\Desktop\HangManStarterKit\obj\Debug\HangManStarterKit.csprojAssem
 C:\Users\Tommy\Desktop\HangManStarterKit\obj\Debug\HangManStarterKit.csproj.CoreCompileInputs.cache
 C:\Users\Tommy\Desktop\HangManStarterKit\obj\Debug\HangManStarterKit.exe
 C:\Users\Tommy\Desktop\HangManStarterKit\obj\Debug\HangManStarterKit.pdb
+C:\Users\fatmo\Grand Circus\Labs\HangManAI\bin\Debug\HangManStarterKit.exe.config
+C:\Users\fatmo\Grand Circus\Labs\HangManAI\bin\Debug\HangManStarterKit.exe
+C:\Users\fatmo\Grand Circus\Labs\HangManAI\bin\Debug\HangManStarterKit.pdb
+C:\Users\fatmo\Grand Circus\Labs\HangManAI\obj\Debug\HangManStarterKit.csprojAssemblyReference.cache
+C:\Users\fatmo\Grand Circus\Labs\HangManAI\obj\Debug\HangManStarterKit.csproj.CoreCompileInputs.cache
+C:\Users\fatmo\Grand Circus\Labs\HangManAI\obj\Debug\HangManStarterKit.exe
+C:\Users\fatmo\Grand Circus\Labs\HangManAI\obj\Debug\HangManStarterKit.pdb

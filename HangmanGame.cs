@@ -80,8 +80,16 @@ namespace HangManStarterKit
             else if (word.Contains(guess))
             {
                 Console.WriteLine("Found a letter!");
-                int index = word.IndexOf(guess);
-                foundLetters[index] = guess;
+                for (int i = 0; i < word.Length; i++)
+                {
+                    if (word[i] == guess)
+                    {
+                        foundLetters[i] = guess;
+                    }
+                }
+
+                //int index = word.IndexOf(guess);
+                //foundLetters[index] = guess;
                 guessedLetters.Add(guess);
             }
             else
