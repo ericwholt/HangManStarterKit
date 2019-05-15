@@ -37,6 +37,7 @@ namespace HangManStarterKit
             TimesToRun = GetInt();
             Play(Word, TimesToRun);
             DisplayStats();
+            Console.Read();
         }
 
         /// <summary>
@@ -109,6 +110,7 @@ namespace HangManStarterKit
         /// </summary>
         public void DisplayStats()
         {
+            Console.Clear();
             Console.WriteLine($"Test on {Word} was ran {NumberOfRuns} times");
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Yellow;
