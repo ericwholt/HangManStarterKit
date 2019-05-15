@@ -7,6 +7,9 @@ namespace HangManStarterKit
     {
         static void Main(string[] args)
         {
+            //HumanPlayer hp = new HumanPlayer();
+            //HangmanGame hg = new HangmanGame(hp);
+            //hg.Run();
             AutoPlay ap = new AutoPlay();
             ap.Run();
         }

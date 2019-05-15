@@ -1,9 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace HangManStarterKit
 {
     class BruteForcePlayer : Player
     {
+
+        public BruteForcePlayer()
+        {
+
+        }
         public override char Guess()
         {
 

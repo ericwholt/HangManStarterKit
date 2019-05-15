@@ -17,6 +17,8 @@ namespace HangManStarterKit
         public HangmanGame(Player guesser)
         {
             this.guesser = guesser;
+            guesser.startTime = new DateTime();
+            guesser.startTime = DateTime.Now;
             Random r = new Random();
             int index = r.Next(0, wordBank.Count);
             word = wordBank[index];
@@ -81,6 +83,9 @@ namespace HangManStarterKit
                 }
             }
             guesser.Tries = tries;
+            guesser.endTime = DateTime.Now;
+            guesser.timeSpan = guesser.endTime - guesser.startTime;
+            //Console.WriteLine(guesser.timeSpan);
             if (!automated)
             {
                 Console.WriteLine("You won! Good Job!");

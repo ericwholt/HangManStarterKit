@@ -6,7 +6,6 @@ namespace HangManStarterKit
     {
         public Random Rnd { get; set; }
 
-
         public RandomPlayer()
         {
             Rnd = new Random();
@@ -14,9 +13,18 @@ namespace HangManStarterKit
 
         public override char Guess()
         {
-
-            int index = Rnd.Next(0, alphabet.Count);
+            int index = -1;
             char guess = 'a';
+            try
+            {
+                index = Rnd.Next(0, alphabet.Count);
+
+            }
+            catch (Exception)
+            {
+                Rnd = new Random();
+                index = Rnd.Next(0, alphabet.Count);
+            }
             if (index < alphabet.Count)
             {
                 guess = alphabet[index];

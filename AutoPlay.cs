@@ -12,13 +12,24 @@ namespace HangManStarterKit
         public List<int> RPTries { get; private set; }
         public List<int> BFPTries { get; private set; }
         public List<int> SPTries { get; private set; }
+        //private Player CurrentPlayer { get; set; }
         private int TimesToRun { get; set; }
+        public List<TimeSpan> SPTimeSpans { get; set; }
+        public List<TimeSpan> RPTimeSpans { get; set; }
+        public List<TimeSpan> BFPTimeSpans { get; set; }
+        public double RPAverageTicks { get; set; }
+        public double BFPAverageTicks { get; set; }
+        public double SPAverageTicks { get; set; }
 
         public AutoPlay()
         {
             RPTries = new List<int>();
             BFPTries = new List<int>();
             SPTries = new List<int>();
+            SPTimeSpans = new List<TimeSpan>();
+            RPTimeSpans = new List<TimeSpan>();
+            BFPTimeSpans = new List<TimeSpan>();
+
             this.TimesToRun = TimesToRun;
             NumberOfRuns = 0;
         }
@@ -60,9 +71,16 @@ namespace HangManStarterKit
             HangmanGame hg3 = new HangmanGame(sp, word, true);
 
             RPTries.Add(rp.Tries);
+            //RPTimeSpans.Add(rp.timeSpan);
             BFPTries.Add(bfp.Tries);
+            //BFPTimeSpans.Add(bfp.timeSpan);
             SPTries.Add(sp.Tries);
+            //SPTimeSpans.Add(sp.timeSpan);
 
+            //double RPAverageTicks = RPTimeSpans.Average(timeSpan => timeSpan.Ticks);
+            //double BFPAverageTicks = RPTimeSpans.Average(timeSpan => timeSpan.Ticks);
+            //double SPAverageTicks = RPTimeSpans.Average(timeSpan => timeSpan.Ticks);
+            
 
             if (timesToRun > 0)
             {
@@ -108,19 +126,115 @@ namespace HangManStarterKit
         /// <summary>
         /// Print the word used and number of tests. Then prints average of each players tries per game.
         /// </summary>
-        public void DisplayStats()
+        //public void DisplayStats()
+        //{
+        //    Console.Clear();
+        //    Console.WriteLine($"Test on {Word} was ran {NumberOfRuns} times");
+        //    Console.WriteLine();
+        //    Console.ForegroundColor = ConsoleColor.Yellow;
+        //    Console.WriteLine($"Smart Player Average: {SPTries.Average()}");
+        //    Console.WriteLine();
+        //    Console.ForegroundColor = ConsoleColor.Green;
+        //    Console.WriteLine($"Random Player Average: {RPTries.Average()}");
+        //    Console.WriteLine();
+        //    Console.ForegroundColor = ConsoleColor.Red;
+        //    Console.WriteLine($"Brute Force Player Average: {BFPTries.Average()}");
+        //}
+
+        /// <summary>
+        /// Print the word used and number of tests. Then prints average of each players tries per game.
+        /// </summary>
+        private void DisplayStats()
         {
             Console.Clear();
-            Console.WriteLine($"Test on {Word} was ran {NumberOfRuns} times");
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Smart Player Average: {SPTries.Average()}");
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Random Player Average: {RPTries.Average()}");
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Brute Force Player Average: {BFPTries.Average()}");
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(AddSpacesToFrontBackString($"Test on {Word} was ran {NumberOfRuns} times", 68));
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine($"{AddSpacesToString("Player Type", 20)}{AddSpacesToString("Games Played", 15)}{AddSpacesToString("Avg Tries", 13)}{AddSpacesToString("Avg Time", 20)}");
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine($"{AddSpacesToString("Smart Player", 20)}{AddSpacesToString(NumberOfRuns.ToString(), 15)}{AddSpacesToString(SPTries.Average().ToString(), 13)}{AddSpacesToString("Not Implemented", 20)}");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine($"{AddSpacesToString("Random Player", 20)}{AddSpacesToString(NumberOfRuns.ToString(), 15)}{AddSpacesToString(RPTries.Average().ToString(), 13)}{AddSpacesToString("Not Implemented", 20)}");
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine($"{AddSpacesToString("Brute Force Player", 20)}{AddSpacesToString(NumberOfRuns.ToString(), 15)}{AddSpacesToString(BFPTries.Average().ToString(), 13)}{AddSpacesToString("Not Implemented", 20)}");
+            Console.ResetColor();
+        }
+
+        /// <summary>
+        /// Returns string with spaces on right side equal to string length minus int number of spaces.
+        /// </summary>
+        /// <param name="str">string</param>
+        /// <param name="numberOfSpaces">int</param>
+        /// <returns>string</returns>
+        private string AddSpacesToString(string str, int numberOfSpaces)
+        {
+            {
+                int leng = numberOfSpaces - str.Length;
+                for (int i = 0; i < leng; i++)
+                {
+                    str += " ";
+                }
+                return str;
+            }
+        }
+
+        private string AddSpacesToFrontBackString(string str, int numberOfSpaces)
+        {
+            {
+                //while (str.Length < 4)
+                //{
+                //    str += " ";
+                //}
+
+                string tempStr = "";
+                int halfString;
+                int strLength = 0;
+                if (str.Length % 2 == 1)
+                {
+
+                    strLength = str.Length + 1;
+                }
+                else
+                {
+                    strLength = str.Length;
+                }
+                halfString = strLength / 2;
+                int numberOfSpacesEven;
+                if (numberOfSpaces % 2 == 1)
+                {
+                    numberOfSpacesEven = numberOfSpaces - 1;
+                }
+                else
+                {
+                    numberOfSpacesEven = numberOfSpaces;
+                }
+                int halfSpaces = numberOfSpacesEven / 2;
+                //int leng = halfSpaces - str.Length;
+                for (int i = 0; i < halfSpaces - halfString; i++)
+                {
+                    tempStr += " ";
+                }
+                //for (int k = 0; k < remainspaces; k++)
+                //{
+                //    tempStr += " ";
+                //}
+                tempStr += str.Trim();
+                for (int j = 0; j < halfSpaces - halfString; j++)
+                {
+                    tempStr += " ";
+                }
+                if (tempStr.Length - numberOfSpaces < 0)
+                {
+                    tempStr += " ";
+                }
+
+                return tempStr;
+            }
         }
     }
 }
